@@ -106,5 +106,15 @@ describe('lambda', () => {
                 return cb()
             })
         })
+        it('should be able to get valid language as return for wildcard * header', function (cb) {
+            this.event.Records[0].cf.request.headers['accept-language'].push({key: 'Accept-Language', value:'*'})
+            return this.handler(this.event, this.context, (e, request) => {
+                expect(e).to.be.null
+                expect(request.headers['accept-language'][0].value).to.equal('en-US');
+                expect(request.headers['x-cvc-language'][0].value).to.equal('en');
+                expect(request.headers['x-cvc-locale'][0].value).to.equal('en-US');
+                return cb()
+            })
+        })
     })
 })

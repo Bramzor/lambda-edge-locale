@@ -8,10 +8,7 @@ const supportedLanguages = ["en-US", "nl-BE"]
 let printlogs = true
 
 function log(msg: string) {
-    if (!printlogs) {
-        return
-    }
-    console.log(msg)
+    return !printlogs || console.log(msg)
 }
 
 export default function(event: any, context: any, callback: any): any {

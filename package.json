@@ -6,8 +6,10 @@
   "scripts": {
     "setup": "npm install",
     "pretest": "npm run build",
-    "test": "if ! npm list | grep -q chai; then npm install --development; fi && npm run tslint && nyc -x 'index*' -x 'test/*' mocha",
+    "test": "if ! npm list | grep -q chai; then npm install --development; fi && npm run tslint && npm run nyc",
     "test-only": "mocha",
+    "nyc": "nyc -x 'index*' -x 'test/*' mocha",
+    "coverage": "nyc -x 'index*' -x 'test/*'  report --reporter=text-lcov | coveralls",
     "build": "tsc",
     "tslint": "node_modules/tslint/bin/tslint -c tslint.json '*.ts'",
     "deploy": "tsc && rm -rf node_modules && npm install --production",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^12.6.2",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.5",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "tslint": "^5.18.0",
