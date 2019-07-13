@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+node_modules
+
+.nyc_output
+
+*.zip
+index.js
+fetchlocale.js
