@@ -34,7 +34,7 @@ To use this plugin:
 
 * Clone this repo: git clone 
 * npm install
-* npm run createzip  `npm run createzip` will remove all development modules and install the minimum production packages to create a zipfile at ../lambda-edge-locale.zip
+* `npm run createzip` will remove all development modules and install the minimum production packages to create a zipfile at ../lambda-edge-locale.zip
 * create a function on AWS for Lambda Edge (inside region us-east-1)
 * create a trigger for that function in your CloudFront distribution for "Viewer Request"
 * add a whitelist header to your CloudFront distribution behavior for the custom header you are using and want to use as caching parameter. For example: Accept-Language or X-CVC-Language
@@ -45,4 +45,4 @@ Other nice things in this example:
 
 (**) Coldstart is the event when a Lambda function was stopped because of inactivity for a long time (appr. 30-40min??) and has to be started from scratch. This increases the response time of the request. So it is beneficial to keep it running on multiple locations, a good way to do this is with an uptime monitoring tool like for example [updown.io](https://updown.io/r/HV6RD)
 
-It can help to change CloudFront price class to "Use Only U.S., Canada and Europe" so you only need to keep your function running in fewer locations.
+It can help to change CloudFront price class to "Use Only U.S., Canada and Europe" so you only need to keep your function running in fewer locations. Although effect might be small due to the large amount of edge locations.
